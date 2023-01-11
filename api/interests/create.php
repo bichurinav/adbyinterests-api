@@ -8,7 +8,7 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
 
 include $_SERVER['DOCUMENT_ROOT'] . '/core/App.php';
 
-$app = new App(__DIR__, App::initDB());
+$app = new App(__DIR__, App::initDB(), 'POST');
 
 App::response([
     'method' => $_SERVER['REQUEST_METHOD'],

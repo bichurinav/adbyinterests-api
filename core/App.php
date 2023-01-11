@@ -11,13 +11,19 @@ class App
     public $data;
     public static $db;
 
-    public function __construct($dir, $db)
+    public function __construct($dir, $db, $method = 'GET')
     {
-        $this->initAPI($dir, $db);
+        if ($_SERVER['REQUEST_METHOD'] !== $method) {
+            self::response([
+                'method' => $_SERVER['REQUEST_METHOD'],
+                'error' => '[!] Измените метод запроса на ' . $method,
+            ]);
+        }
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $json = file_get_contents('php://input');
             $this->data = json_decode($json, true);
         }
+        $this->initAPI($dir, $db);
     }
 
     private function initAPI($dir, $db)
