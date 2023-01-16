@@ -1,0 +1,16 @@
+{
+  "name": "home/adbyinterests-api",
+  "autoload": {
+    "psr-4": {
+      "Api\\": "src/api",
+      "Core\\": "src/core"
+    }
+  },
+  "authors": [
+    {
+      "name": "Artem Bichurin",
+      "email": "bichurin.overclock1ng@gmail.com"
+    }
+  ],
+  "require": {}
+}

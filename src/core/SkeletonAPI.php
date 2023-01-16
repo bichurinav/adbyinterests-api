@@ -1,5 +1,7 @@
 <?php
 
+namespace Core;
+
 abstract class SkeletonAPI
 {
     private $db;

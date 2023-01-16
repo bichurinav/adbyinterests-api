@@ -1,9 +1,9 @@
 <?php
 
-include_once $_SERVER['DOCUMENT_ROOT'] . '/utils.php';
+namespace Core;
+
+include_once $_SERVER['DOCUMENT_ROOT'] . '/functions.php';
 include_once $_SERVER['DOCUMENT_ROOT'] . '/cfg.php';
-include_once $_SERVER['DOCUMENT_ROOT'] . '/core/Database.php';
-include_once $_SERVER['DOCUMENT_ROOT'] . '/core/SkeletonAPI.php';
 
 class App
 {
@@ -28,10 +28,9 @@ class App
 
     private function initAPI($dir, $db)
     {
-        $objFile = ucfirst(basename($dir)) . '.php';
-        include $_SERVER['DOCUMENT_ROOT'] . '/objects/' . $objFile;
-        $objName = str_replace('.php', '', $objFile);
-        $this->api = new $objName($_GET, $db);
+        $objName = ucfirst(basename($dir));
+        $obj = "\Api\\" . $objName;
+        $this->api = new $obj($_GET, $db);
     }
 
     public static function initDB()
